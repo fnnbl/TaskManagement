@@ -81,12 +81,18 @@ namespace TaskManagementBetter
 
         public List<Task> GetAllTasks()
         {
+            // Sort tasks by due date before returning
+            tasks.Sort((a, b) => a.DueDate.CompareTo(b.DueDate));
             return new List<Task>(tasks);
         }
 
         public void SaveTasksToJson(string filePath)
         {
-            string json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            var settings = new JsonSerializerSettings
+            {
+                DateFormatString = "dd-MM-yyyy"
+            };
+            string json = JsonConvert.SerializeObject(tasks, Formatting.Indented, settings);
             File.WriteAllText(filePath, json);
         }
 

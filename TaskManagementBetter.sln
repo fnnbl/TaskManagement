@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementBetter", "TaskManagementBetter\TaskManagementBetter.csproj", "{B95C3460-FF9B-4E50-BDF5-B48A79B72067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagementBetter", "TaskManagementBetter\TaskManagementBetter.csproj", "{B95C3460-FF9B-4E50-BDF5-B48A79B72067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementBetter.UI", "TaskManagementBetter.UI\TaskManagementBetter.UI.csproj", "{403000A5-54DE-46BA-8254-85ACB97DEEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagementBetter.UI", "TaskManagementBetter.UI\TaskManagementBetter.UI.csproj", "{403000A5-54DE-46BA-8254-85ACB97DEEBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementBetter.Tests", "TaskManagementBetter.Tests\TaskManagementBetter.Tests.csproj", "{18FD18DD-A98C-419A-A85E-0BA4DE3B75B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagementBetter.Tests", "TaskManagementBetter.Tests\TaskManagementBetter.Tests.csproj", "{18FD18DD-A98C-419A-A85E-0BA4DE3B75B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
