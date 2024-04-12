@@ -21,7 +21,7 @@ namespace TaskManagementBetter.Tests
             taskManager.AddTask(task);
 
             // Assert
-            Assert.Contains(task, taskManager.GetAllTasks());
+            Assert.That(taskManager.GetAllTasks(), Contains.Item(task));
         }
 
         [Test]
@@ -54,9 +54,9 @@ namespace TaskManagementBetter.Tests
             // Assert
             var updatedTask = taskManager.GetAllTasks().Find(t => t.Title == newTitle);
             Assert.NotNull(updatedTask);
-            Assert.AreEqual(newTitle, updatedTask.Title);
-            Assert.AreEqual(newDescription, updatedTask.Description);
-            Assert.AreEqual(newDueDate, updatedTask.DueDate);
+            Assert.That(updatedTask.Title, Is.EqualTo(newTitle));
+            Assert.That(updatedTask.Description, Is.EqualTo(newDescription));
+            Assert.That(updatedTask.DueDate, Is.EqualTo(newDueDate));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace TaskManagementBetter.Tests
             var retrievedTask = taskManager.GetAllTasks().Find(t => t.Title == task.Title);
 
             // Assert
-            Assert.AreEqual(task, retrievedTask);
+            Assert.That(retrievedTask, Is.EqualTo(task));
         }
 
         [Test]
@@ -86,8 +86,8 @@ namespace TaskManagementBetter.Tests
             var tasks = taskManager.GetAllTasks();
 
             // Assert
-            Assert.Contains(task1, tasks);
-            Assert.Contains(task2, tasks);
+            Assert.That(tasks, Contains.Item(task1));
+            Assert.That(tasks, Contains.Item(task2));
         }
 
         [Test]
@@ -109,12 +109,12 @@ namespace TaskManagementBetter.Tests
             List<Task> originalTasks = originalTaskManager.GetAllTasks();
             List<Task> loadedTasks = loadedTaskManager.GetAllTasks();
 
-            Assert.AreEqual(originalTasks.Count, loadedTasks.Count);
+            Assert.That(loadedTasks.Count, Is.EqualTo(originalTasks.Count));
             for (int i = 0; i < originalTasks.Count; i++)
             {
-                Assert.AreEqual(originalTasks[i].Title, loadedTasks[i].Title);
-                Assert.AreEqual(originalTasks[i].Description, loadedTasks[i].Description);
-                Assert.AreEqual(originalTasks[i].GetFormattedDueDate(), loadedTasks[i].GetFormattedDueDate());
+                Assert.That(loadedTasks[i].Title, Is.EqualTo(originalTasks[i].Title));
+                Assert.That(loadedTasks[i].Description, Is.EqualTo(originalTasks[i].Description));
+                Assert.That(loadedTasks[i].GetFormattedDueDate(), Is.EqualTo(originalTasks[i].GetFormattedDueDate()));
             }
         }
 
@@ -122,20 +122,20 @@ namespace TaskManagementBetter.Tests
         public void AddTask_WhenNullTaskProvided_ShouldThrowArgumentNullException()
         {
             // Arrange
-            Task nullTask = null;
+            Task? nullTask = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => taskManager.AddTask(nullTask));
+            Assert.Throws<ArgumentNullException>(() => taskManager.AddTask(nullTask!));
         }
 
         [Test]
         public void EditTask_WhenNullTaskProvided_ShouldThrowArgumentNullException()
         {
             // Arrange
-            Task nullTask = null;
+            Task? nullTask = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => taskManager.EditTask(nullTask, "New Title", "New Description", DateTime.Now));
+            Assert.Throws<ArgumentNullException>(() => taskManager.EditTask(nullTask!, "New Title", "New Description", DateTime.Now));
         }
 
         [Test]
@@ -149,7 +149,7 @@ namespace TaskManagementBetter.Tests
             taskManager.LoadTasksFromJson("nonexistent_file.json");
 
             // Assert
-            Assert.AreEqual("Die Datei existiert nicht." + Environment.NewLine, consoleOutput.ToString());
+            Assert.That(consoleOutput.ToString(), Is.EqualTo("Die Datei existiert nicht." + Environment.NewLine));
         }
 
         [Test]
@@ -168,10 +168,7 @@ namespace TaskManagementBetter.Tests
 
             // Assert
             var sortedByDueDate = sortedTasks.OrderBy(t => t.DueDate).ToList();
-            for (int i = 0; i < sortedTasks.Count; i++)
-            {
-                Assert.AreEqual(sortedByDueDate[i], sortedTasks[i]);
-            }
+            Assert.That(sortedTasks, Is.EqualTo(sortedByDueDate));
         }
     }
 }
