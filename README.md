@@ -16,7 +16,7 @@ This is a simple console-based Task Management App written in C#. The applicatio
 ## Installation
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-repo/task-management-app.git
+    git clone https://github.com/fnnbl/TaskManagement.git
     ```
 2. **Navigate to the project directory**:
     ```bash
